@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace Firma
 {
-     enum typKontraktu { staż, etat }
-        class Kontrakt
-        {
-        private int podstawaWynagrodzenia;
+    enum typKontraktu { staż, etat }
+
+    class Kontrakt
+    {
+        private double podstawaWynagrodzenia;
         private typKontraktu typ;
 
-        public int getPodstawa()
+        public double getPodstawa()
         {
             return podstawaWynagrodzenia;
         }
@@ -22,22 +23,37 @@ namespace Firma
         }
 
         public Kontrakt()
-        { }
+        {
+            this.typ = typKontraktu.staż;
+            this.podstawaWynagrodzenia = 2000;
+        }
 
 
-        public Kontrakt(typKontraktu typ, int podstawa)
+        public Kontrakt(typKontraktu typ, double podstawa)
         {
             this.typ = typ;
             this.podstawaWynagrodzenia = podstawa;
         }
-        private double Pensja()
+        public double Pensja()
         {        
                 return podstawaWynagrodzenia;
             
         }
-        private double Pensja(int nadgodziny)
+        public double Pensja(double nadgodziny)
         {
             return podstawaWynagrodzenia + nadgodziny * (podstawaWynagrodzenia / 160);
+        }
+
+        //metoda pomocnicza do zmiany kontraktu dla pracowników
+        public void ZmienTyp(typKontraktu nowy)
+        {
+            this.typ = nowy;
+        }
+
+        //metoda pomocnicza na zmianę pensji
+        public void ZmienPodst(double nowa)
+        {
+            this.podstawaWynagrodzenia = nowa;
         }
     }
     
